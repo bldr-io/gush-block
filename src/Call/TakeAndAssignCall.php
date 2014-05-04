@@ -16,15 +16,15 @@ use Bldr\Call\AbstractCall;
 /**
  * @author Luis Cordova <cordoval@gmail.com>
  */
-class BootstrapCall extends AbstractCall
+class TakeAndAssignCall extends AbstractCall
 {
     /**
      * {@inheritDoc}
      */
     public function configure()
     {
-        $this->setName('bootstrap')
-            ->setDescription('This creates and takes an issue')
+        $this->setName('takenassign')
+            ->setDescription('This takes and assign a ticket')
         ;
     }
 

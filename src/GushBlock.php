@@ -25,5 +25,6 @@ class GushBlock extends AbstractBlock
     protected function assemble(array $config, SymfonyContainerBuilder $container)
     {
         $this->addCall('bldr_gush.bootstrap', 'Bldr\Block\Frontend\Call\BootstrapCall');
+        $this->addCall('bldr_gush.takenassign', 'Bldr\Block\Frontend\Call\TakeAndAssignCall');
     }
 }
