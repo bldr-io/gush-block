@@ -1,0 +1,10 @@
+imports:
+    - { resource: .bldr/profiles.yml }
+    - { resource: .bldr/tasks.yml }
+
+bldr:
+    name: bldr-io/gush-block
+    description: Gush integration with Bldr
+
+blocks:
+    - Bldr\Block\Gush\GushBlock
