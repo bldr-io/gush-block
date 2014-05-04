@@ -16,7 +16,7 @@ use Bldr\Call\AbstractCall;
 /**
  * @author Luis Cordova <cordoval@gmail.com>
  */
-class FlowCall extends AbstractCall
+class BootstrapCall extends AbstractCall
 {
     /**
      * {@inheritDoc}
@@ -33,6 +33,6 @@ class FlowCall extends AbstractCall
      */
     public function run()
     {
-        
+
     }
 }
