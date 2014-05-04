@@ -1,0 +1,20 @@
+bldr:
+    tasks:
+        gush_bootstrap:
+            calls:
+                - { type: notify, message: Taking a ticket]}
+                -
+                    type: exec
+                    executable: gush
+                    arguments:
+                        - i:take
+                        - 12
+                - { type: notify, message: Ticket taken]}
+                -
+                    type: background
+                    executable: php
+                    kill: true
+                    arguments:
+                        - -S
+                        - 127.0.0.1
+                - { type: notify, message: Killed Web Server]}

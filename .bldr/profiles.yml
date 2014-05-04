@@ -1,0 +1,9 @@
+bldr:
+    profiles:
+        watch:
+            description: "Gush Profile"
+            tasks:
+                - gush_bootstrap
+                - gush_send_pr
+                - gush_merge
+                - gush_clean_up

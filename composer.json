@@ -1,0 +1,25 @@
+{
+    "name": "bldr-io/gush-block",
+    "description": "Block automate macro flows with Gush",
+    "require-dev":       {
+        "bldr-io/bldr":              "~4.1",
+        "dflydev/embedded-composer": "dev-master",
+        "composer/composer":         "dev-master"
+    },
+    "license":           "MIT",
+    "authors":           [
+        {
+            "name":  "Luis Cordova",
+            "email": "cordoval@gmail.com"
+        },
+        {
+            "name":  "Aaron Scherer",
+            "email": "aequasi@gmail.com"
+        }
+    ],
+    "autoload":          {
+        "psr-4": {
+            "Bldr\\Block\\Gush\\": "src/"
+        }
+    }
+}
