@@ -1,9 +1,6 @@
 {
     "name": "bldr-io/gush-block",
     "description": "Block automate macro flows with Gush",
-    "require":           {
-
-    },
     "require-dev":       {
         "bldr-io/bldr":              "~4.0.0",
         "dflydev/embedded-composer": "dev-master",
