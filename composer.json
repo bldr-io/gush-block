@@ -2,15 +2,10 @@
     "name": "bldr-io/gush-block",
     "description": "Bldr Block for working with GushPHP",
     "require": {
-        "gushphp/gush": "~1.8.0",
-        "gushphp/gush-github-adapter": "dev-master@dev",
-        "gushphp/gush-bitbucket-adapter": "dev-master@dev",
-        "gushphp/gush-gitlab-adapter": "dev-master@dev"
-    },
-    "require-dev":       {
-        "bldr-io/bldr":              "~4.1",
-        "dflydev/embedded-composer": "dev-master",
-        "composer/composer":         "dev-master"
+        "gushphp/gush": "~1.8.3",
+        "bldr-io/bldr": "~4.2.0",
+        "dflydev/embedded-composer": "dev-master@dev",
+        "composer/composer": "dev-master@dev"
     },
     "autoload": {
         "psr-4": {
@@ -21,6 +16,10 @@
         {
             "name": "Aaron Scherer",
             "email": "aequasi@gmail.com"
+        },
+        {
+            "name": "Luis Cordova",
+            "email": "cordoval@gmail.com"
         }
     ]
 }
