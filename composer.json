@@ -6,8 +6,8 @@
     },
     "require-dev": {
         "bldr-io/bldr": "~4.2.0",
-        "dflydev/embedded-composer": "dev-master@dev",
-        "composer/composer": "dev-master@dev"
+        "dflydev/embedded-composer": "dev-master",
+        "composer/composer": "dev-master"
     },
     "autoload": {
         "psr-4": {
