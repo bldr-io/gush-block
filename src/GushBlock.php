@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
  */
-class FrontendBlock extends AbstractBlock
+class GushBlock extends AbstractBlock
 {
     /**
      * {@inheritDoc}

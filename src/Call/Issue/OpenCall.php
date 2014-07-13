@@ -35,7 +35,8 @@ class OpenCall extends AbstractIssueCall
         $this->setName('open')
             ->setDescription('Opens the issue specified by the `id` option')
             ->addOption('id', true, 'Issue ID to Take')
-            ->addOption('wip', false, 'Should the issue be tagged as WIP?', false);
+            ->addOption('wip', false, 'Should the issue be tagged as WIP?', false)
+        ;
     }
 
     /**
