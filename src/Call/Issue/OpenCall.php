@@ -17,6 +17,13 @@ use Symfony\Component\Console\Input\ArgvInput;
 
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
+ * 
+ * Example: 
+ * -
+ *   type: gush:issue:open
+ *   id: $ISSUE_ID$ # Will probably be an environment variable, as this changes a lot.
+ *   wip: true
+ * 
  */
 class OpenCall extends AbstractIssueCall
 {
