@@ -2,7 +2,9 @@
     "name": "bldr-io/gush-block",
     "description": "Bldr Block for working with GushPHP",
     "require": {
-        "gushphp/gush": "~1.8.3",
+        "gushphp/gush": "~1.8.3"
+    },
+    "require-dev": {
         "bldr-io/bldr": "~4.2.0",
         "dflydev/embedded-composer": "dev-master@dev",
         "composer/composer": "dev-master@dev"
