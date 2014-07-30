@@ -31,7 +31,7 @@ class TakeCall extends AbstractGushCall
             ->setName('gush:issue:take')
             ->setDescription('Takes the issue specified by the `id` option')
             ->addOption('id', true, 'Issue ID to Take')
-            ->addOption('wip', false, 'Should the issue be tagged as WIP?', false)
+            ->addOption('wip', false, 'Should the issue be tagged as WIP?', true)
             ->addOption('symlinked', false, 'Run with symlinked gush', true)
         ;
     }
