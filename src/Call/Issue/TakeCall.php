@@ -42,14 +42,14 @@ class OpenCall extends AbstractIssueCall
             '--issue_number='.$this->getOption('id'),
         ];
 
-        $output = $this->runCommand($cmd);
+        $output = $this->runGush($cmd);
 
         if ($this->getOption('wip') !== false) {
             $cmd = [
                 'issue:label:assign',
                 '--label=WIP',
             ];
-            $output .= $this->runCommand($this->gush($cmd));
+            $output .= $this->runGush($cmd);
         }
 
         $this->writeln($output);

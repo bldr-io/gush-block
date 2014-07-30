@@ -32,15 +32,17 @@ abstract class AbstractGushCall extends AbstractCall
         return $process->getOutput();
     }
 
-    protected function gush($cmd)
+    protected function runGush($cmd)
     {
-        array_merge(
+        $cmd = array_merge(
             [
                 'php',
                 'gush.phar',
             ],
             $cmd
         );
+
+        return $this->runCommand($cmd);
     }
 
     protected function writeln($output)
