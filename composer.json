@@ -1,27 +1,31 @@
 {
     "name": "bldr-io/gush-block",
     "description": "Bldr Block for working with GushPHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luis Cordova",
+            "email": "cordoval@gmail.com"
+        },
+        {
+            "name": "Aaron Scherer",
+            "email": "aequasi@gmail.com"
+        }
+    ],
     "require": {
         "gushphp/gush": "~1.8.3"
     },
     "require-dev": {
-        "bldr-io/bldr": "~4.2.0",
+        "bldr-io/bldr": "~6.2.0",
         "dflydev/embedded-composer": "dev-master",
         "composer/composer": "dev-master"
+    },
+    "extra": {
+        "block-class": "Bldr\\Block\\Gush\\GushBlock"
     },
     "autoload": {
         "psr-4": {
             "Bldr\\Block\\Gush\\": "src/"
         }
-    },
-    "authors": [
-        {
-            "name": "Aaron Scherer",
-            "email": "aequasi@gmail.com"
-        },
-        {
-            "name": "Luis Cordova",
-            "email": "cordoval@gmail.com"
-        }
-    ]
+    }
 }
