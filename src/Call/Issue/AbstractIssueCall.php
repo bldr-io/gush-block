@@ -23,7 +23,7 @@ abstract class AbstractIssueCall extends AbstractGushCall
      */
     public function getName()
     {
-        return 'issue:'.parent::getName();
+        return parent::getName().':issue';
     }
 }
  
