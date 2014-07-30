@@ -18,7 +18,7 @@ namespace Bldr\Block\Gush\Call\Issue;
  *     id: $ISSUE_ID$
  *     wip: true
  */
-class OpenCall extends AbstractIssueCall
+class TakeCall extends AbstractIssueCall
 {
     /**
      * {@inheritDoc}
