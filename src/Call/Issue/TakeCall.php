@@ -11,6 +11,8 @@
 
 namespace Bldr\Block\Gush\Call\Issue;
 
+use Bldr\Block\Gush\Call\AbstractGushCall;
+
 /**
  * Example: 
  * -
@@ -18,14 +20,15 @@ namespace Bldr\Block\Gush\Call\Issue;
  *     id: $ISSUE_ID$
  *     wip: true
  */
-class TakeCall extends AbstractIssueCall
+class TakeCall extends AbstractGushCall
 {
     /**
      * {@inheritDoc}
      */
     public function configure()
     {
-        $this->setName('take')
+        $this
+            ->setName('gush:issue:take')
             ->setDescription('Takes the issue specified by the `id` option')
             ->addOption('id', true, 'Issue ID to Take')
             ->addOption('wip', false, 'Should the issue be tagged as WIP?', false)

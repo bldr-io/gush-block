@@ -16,14 +16,6 @@ use Symfony\Component\Process\ProcessBuilder;
 
 abstract class AbstractGushCall extends AbstractCall
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'gush';
-    }
-
     protected function runCommand($cmd)
     {
         $process = ProcessBuilder::create($cmd)->getProcess();
