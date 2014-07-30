@@ -44,24 +44,46 @@ class OpenCall extends AbstractIssueCall
     public function run()
     {
         $cmd = [
-            'php',
-            'gush.phar',
             'i:take',
             '--issue_number='.$this->getOption('id'),
         ];
 
-        $this->runCommand($cmd);
+        $output = $this->runCommand($cmd);
 
         if ($this->getOption('wip') !== false) {
-            [
+            $cmd = [
+                'issue:label:assign',
                 '--label=WIP',
             ];
-
+            $output .= $this->runCommand($this->gush($cmd));
         }
+
+        $output = $this->getOutput();
+        $output->writeln(
+            [
+                "<comment>------Gush------</comment>",
+                $output,
+                "<comment>-----/Gush------</comment>"
+            ]
+        );
     }
 
     private function runCommand($cmd)
     {
-        ProcessBuilder::create($cmd)->getProcess()->run();
+        $process = ProcessBuilder::create($cmd)->getProcess();
+        $process->run();
+
+        return $process->getOutput();
+    }
+
+    private function gush($cmd)
+    {
+        array_merge(
+            [
+                'php',
+                'gush.phar',
+            ],
+            $cmd
+        );
     }
 }
