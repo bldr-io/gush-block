@@ -21,6 +21,6 @@ class GushBlock extends AbstractBlock
      */
     protected function assemble(array $config, ContainerBuilder $container)
     {
-        $this->addCall('bldr_gush.issue.take', 'Bldr\Block\Gush\Call\Issue\TakeCall', []);
+        $this->addCall('bldr_gush.issue.take', 'Bldr\Block\Gush\Call\Issue\TakeCall');
     }
 }

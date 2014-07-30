@@ -11,18 +11,12 @@
 
 namespace Bldr\Block\Gush\Call\Issue;
 
-use Gush\Command\Issue\IssueTakeCommand;
-use Gush\Command\Issue\LabelIssuesCommand;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Process\ProcessBuilder;
-
 /**
  * Example: 
  * -
  *   type: gush:issue:take
- *   id: $ISSUE_ID$ # Will probably be an environment variable, as this changes a lot.
+ *   id: $ISSUE_ID$
  *   wip: true
- * 
  */
 class OpenCall extends AbstractIssueCall
 {
@@ -58,32 +52,6 @@ class OpenCall extends AbstractIssueCall
             $output .= $this->runCommand($this->gush($cmd));
         }
 
-        $output = $this->getOutput();
-        $output->writeln(
-            [
-                "<comment>------Gush------</comment>",
-                $output,
-                "<comment>-----/Gush------</comment>"
-            ]
-        );
-    }
-
-    private function runCommand($cmd)
-    {
-        $process = ProcessBuilder::create($cmd)->getProcess();
-        $process->run();
-
-        return $process->getOutput();
-    }
-
-    private function gush($cmd)
-    {
-        array_merge(
-            [
-                'php',
-                'gush.phar',
-            ],
-            $cmd
-        );
+        $this->writeln($output);
     }
 }
