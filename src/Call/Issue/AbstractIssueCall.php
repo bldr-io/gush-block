@@ -13,9 +13,6 @@ namespace Bldr\Block\Gush\Call\Issue;
 
 use Bldr\Block\Gush\Call\AbstractGushCall;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 abstract class AbstractIssueCall extends AbstractGushCall
 {
     /**

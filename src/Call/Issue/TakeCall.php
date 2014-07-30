@@ -17,11 +17,9 @@ use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Process\ProcessBuilder;
 
 /**
- * @author Aaron Scherer <aequasi@gmail.com>
- * 
  * Example: 
  * -
- *   type: gush:issue:open
+ *   type: gush:issue:take
  *   id: $ISSUE_ID$ # Will probably be an environment variable, as this changes a lot.
  *   wip: true
  * 
@@ -33,8 +31,8 @@ class OpenCall extends AbstractIssueCall
      */
     public function configure()
     {
-        $this->setName('open')
-            ->setDescription('Opens the issue specified by the `id` option')
+        $this->setName('take')
+            ->setDescription('Takes the issue specified by the `id` option')
             ->addOption('id', true, 'Issue ID to Take')
             ->addOption('wip', false, 'Should the issue be tagged as WIP?', false)
         ;
@@ -45,17 +43,25 @@ class OpenCall extends AbstractIssueCall
      */
     public function run()
     {
-        $command = [
+        $cmd = [
             'php',
             'gush.phar',
-            'i:create',
+            'i:take',
             '--issue_number='.$this->getOption('id'),
-            ''
         ];
-        = ProcessBuilder::create($cmd)
+
+        $this->runCommand($cmd);
+
         if ($this->getOption('wip') !== false) {
-            $input = new ArgvInput(['--label=WIP']);
+            [
+                '--label=WIP',
+            ];
 
         }
+    }
+
+    private function runCommand($cmd)
+    {
+        ProcessBuilder::create($cmd)->getProcess()->run();
     }
 }
