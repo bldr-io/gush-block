@@ -32,6 +32,7 @@ class TakeCall extends AbstractGushCall
             ->setDescription('Takes the issue specified by the `id` option')
             ->addOption('id', true, 'Issue ID to Take')
             ->addOption('wip', false, 'Should the issue be tagged as WIP?', false)
+            ->addOption('symlinked', false, 'Run with symlinked gush', true)
         ;
     }
 
@@ -40,20 +41,21 @@ class TakeCall extends AbstractGushCall
      */
     public function run()
     {
-        $cwd = '.';
+        $symlinked = $this->getOption('symlinked');
+
         $cmd = [
             'i:take',
             '--issue_number='.$this->getOption('id'),
         ];
 
-        $output = $this->runGush($cmd, $cwd);
+        $output = $this->runGush($cmd, $symlinked);
 
         if ($this->getOption('wip') !== false) {
             $cmd = [
                 'issue:label:assign',
                 '--label=WIP',
             ];
-            $output .= $this->runGush($cmd, $cwd);
+            $output .= $this->runGush($cmd, $symlinked);
         }
 
         $this->writeln($output);

@@ -16,27 +16,28 @@ use Symfony\Component\Process\ProcessBuilder;
 
 abstract class AbstractGushCall extends AbstractCall
 {
-    protected function runCommand($cmd, $cwd)
+    protected function runCommand($cmd)
     {
         $builder = new ProcessBuilder($cmd);
-        $builder->setWorkingDirectory($cwd);
         $process = $builder->getProcess();
         $process->run();
 
         return $process->getOutput();
     }
 
-    protected function runGush($cmd, $cwd)
+    protected function runGush($cmd, $symlinked = true)
     {
+        $gush = ['php', 'gush.phar'];
+        if ($symlinked) {
+            $gush = ['gush'];
+        }
+
         $cmd = array_merge(
-            [
-                'php',
-                'gush.phar',
-            ],
+            $gush,
             $cmd
         );
 
-        return $this->runCommand($cmd, $cwd);
+        return $this->runCommand($cmd);
     }
 
     protected function writeln($output)
