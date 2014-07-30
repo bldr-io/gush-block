@@ -14,6 +14,7 @@ namespace Bldr\Block\Gush\Call\Issue;
 use Gush\Command\Issue\IssueTakeCommand;
 use Gush\Command\Issue\LabelIssuesCommand;
 use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Process\ProcessBuilder;
 
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
@@ -44,27 +45,17 @@ class OpenCall extends AbstractIssueCall
      */
     public function run()
     {
-        /*
-         * Right now, this is kinda ghetto, but if the logic of the gush
-         * commands is moved to a service, this block could use the services instead
-         * of running these commands.
-         *
-         * This wont work right now, as it wont read a .gush.yml file, but a little work in gush
-         * and that piece should work...
-         *
-         * This MAY not even be the best way to do this... But the idea still stands..
-         */
-
-        $input = new ArgvInput(['--issue_number='.$this->getOption('id')]);
-
-        $command = new IssueTakeCommand();
-        $command->run($input, $this->getOutput());
-
+        $command = [
+            'php',
+            'gush.phar',
+            'i:create',
+            '--issue_number='.$this->getOption('id'),
+            ''
+        ];
+        = ProcessBuilder::create($cmd)
         if ($this->getOption('wip') !== false) {
             $input = new ArgvInput(['--label=WIP']);
 
-            $command = new LabelIssuesCommand();
-            $command->run($input, $this->getOutput());
         }
     }
 }
