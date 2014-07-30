@@ -16,11 +16,9 @@ use Bldr\Block\Gush\Call\AbstractGushCall;
 /**
  * Example: 
  * -
- *     type: gush:issue:take
- *     id: $ISSUE_ID$
- *     wip: true
+ *     type: gush:issue:create
  */
-class TakeCall extends AbstractGushCall
+class CreateCall extends AbstractGushCall
 {
     /**
      * {@inheritDoc}
@@ -28,10 +26,8 @@ class TakeCall extends AbstractGushCall
     public function configure()
     {
         $this
-            ->setName('gush:issue:take')
-            ->setDescription('Takes the issue specified by the `id` option')
-            ->addOption('id', true, 'Issue ID to Take')
-            ->addOption('wip', false, 'Should the issue be tagged as WIP?', true)
+            ->setName('gush:issue:create')
+            ->setDescription('Creates an issue with bldr')
             ->addOption('symlinked', false, 'Run with symlinked gush', true)
         ;
     }
@@ -44,19 +40,14 @@ class TakeCall extends AbstractGushCall
         $symlinked = $this->getOption('symlinked');
 
         $cmd = [
-            'i:take',
-            '--issue_number='.$this->getOption('id'),
+            'i:create',
         ];
 
         $output = $this->runGush($cmd, $symlinked);
 
-        if ($this->getOption('wip') !== false) {
-            $cmd = [
-                'issue:label:assign',
-                '--label=WIP',
-            ];
-            $output .= $this->runGush($cmd, $symlinked);
-        }
+        // detect current branch and capture the #
+        // exports to environment the # as ISSUE_ID for
+        // the following call takeCal
 
         $this->writeln($output);
     }
