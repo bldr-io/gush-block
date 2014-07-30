@@ -12,10 +12,8 @@
 namespace Bldr\Block\Gush\Call;
 
 use Bldr\Call\AbstractCall;
+use Symfony\Component\Process\ProcessBuilder;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 abstract class AbstractGushCall extends AbstractCall
 {
     /**
@@ -23,7 +21,39 @@ abstract class AbstractGushCall extends AbstractCall
      */
     public function getName()
     {
-        return 'gush:'.parent::getName();
+        return 'gush';
+    }
+
+    protected function runCommand($cmd)
+    {
+        $process = ProcessBuilder::create($cmd)->getProcess();
+        $process->run();
+
+        return $process->getOutput();
+    }
+
+    protected function runGush($cmd)
+    {
+        $cmd = array_merge(
+            [
+                'php',
+                'gush.phar',
+            ],
+            $cmd
+        );
+
+        return $this->runCommand($cmd);
+    }
+
+    protected function writeln($output)
+    {
+        $this->getOutput()->writeln(
+            [
+                "<comment>------Gush------</comment>",
+                $output,
+                "<comment>-----/Gush------</comment>"
+            ]
+        );
     }
 }
  

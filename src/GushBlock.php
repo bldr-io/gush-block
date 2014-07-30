@@ -14,9 +14,6 @@ namespace Bldr\Block\Gush;
 use Bldr\DependencyInjection\AbstractBlock;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 class GushBlock extends AbstractBlock
 {
     /**
@@ -24,6 +21,6 @@ class GushBlock extends AbstractBlock
      */
     protected function assemble(array $config, ContainerBuilder $container)
     {
-        $this->addCall('bldr_gush.issue.open', 'Bldr\Block\Gush\Call\Issue\OpenCall');
+        $this->addCall('bldr_gush.issue.take', 'Bldr\Block\Gush\Call\Issue\TakeCall');
     }
 }

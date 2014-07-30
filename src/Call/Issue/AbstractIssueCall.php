@@ -13,9 +13,6 @@ namespace Bldr\Block\Gush\Call\Issue;
 
 use Bldr\Block\Gush\Call\AbstractGushCall;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 abstract class AbstractIssueCall extends AbstractGushCall
 {
     /**
@@ -23,7 +20,7 @@ abstract class AbstractIssueCall extends AbstractGushCall
      */
     public function getName()
     {
-        return 'issue:'.parent::getName();
+        return parent::getName().':issue';
     }
 }
  

@@ -14,9 +14,6 @@ namespace Bldr\Block\Gush;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
-/**
- * @author Aaron Scherer <aequasi@gmail.com>
- */
 class Configuration implements ConfigurationInterface
 {
     /**
