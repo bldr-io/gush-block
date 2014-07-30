@@ -16,15 +16,17 @@ use Symfony\Component\Process\ProcessBuilder;
 
 abstract class AbstractGushCall extends AbstractCall
 {
-    protected function runCommand($cmd)
+    protected function runCommand($cmd, $cwd)
     {
-        $process = ProcessBuilder::create($cmd)->getProcess();
+        $builder = new ProcessBuilder($cmd);
+        $builder->setWorkingDirectory($cwd);
+        $process = $builder->getProcess();
         $process->run();
 
         return $process->getOutput();
     }
 
-    protected function runGush($cmd)
+    protected function runGush($cmd, $cwd)
     {
         $cmd = array_merge(
             [
@@ -34,7 +36,7 @@ abstract class AbstractGushCall extends AbstractCall
             $cmd
         );
 
-        return $this->runCommand($cmd);
+        return $this->runCommand($cmd, $cwd);
     }
 
     protected function writeln($output)

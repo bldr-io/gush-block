@@ -40,19 +40,20 @@ class TakeCall extends AbstractGushCall
      */
     public function run()
     {
+        $cwd = '.';
         $cmd = [
             'i:take',
             '--issue_number='.$this->getOption('id'),
         ];
 
-        $output = $this->runGush($cmd);
+        $output = $this->runGush($cmd, $cwd);
 
         if ($this->getOption('wip') !== false) {
             $cmd = [
                 'issue:label:assign',
                 '--label=WIP',
             ];
-            $output .= $this->runGush($cmd);
+            $output .= $this->runGush($cmd, $cwd);
         }
 
         $this->writeln($output);
