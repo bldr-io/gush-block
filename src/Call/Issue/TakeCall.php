@@ -14,9 +14,9 @@ namespace Bldr\Block\Gush\Call\Issue;
 /**
  * Example: 
  * -
- *   type: gush:issue:take
- *   id: $ISSUE_ID$
- *   wip: true
+ *     type: gush:issue:take
+ *     id: $ISSUE_ID$
+ *     wip: true
  */
 class OpenCall extends AbstractIssueCall
 {
