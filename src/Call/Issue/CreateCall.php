@@ -39,8 +39,7 @@ class CreateCall extends AbstractGushCall
     {
         $symlinked = $this->getOption('symlinked');
 
-        $cmd = ['i:create'];
-        $output = $this->runGush($cmd, $symlinked);
+        $output = $this->runGush(['i:create'], $symlinked);
         $this->writeln($output);
     }
 }

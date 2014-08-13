@@ -18,7 +18,6 @@ use Bldr\Block\Gush\Call\AbstractGushCall;
  * -
  *     type: gush:branch:rebase
  *     base_branch: master
- *     symlinked: true
  */
 class RebaseCall extends AbstractGushCall
 {
@@ -31,7 +30,6 @@ class RebaseCall extends AbstractGushCall
             ->setName('gush:branch:rebase')
             ->setDescription('Pulls base branch and re-bases current branch off of that')
             ->addOption('base_branch', false, 'Base branch to sync', 'master')
-            ->addOption('symlinked', false, 'Run with symlinked gush', true)
         ;
     }
 
@@ -40,23 +38,11 @@ class RebaseCall extends AbstractGushCall
      */
     public function run()
     {
-        $symlinked = $this->getOption('symlinked');
         $baseBranch = $this->getOption('base_branch');
 
-        $cmd = ['git', 'checkout', $baseBranch];
-        $output = $this->runCommand($cmd, $symlinked);
-        $this->writeln($output);
-
-        $cmd = ['b:s'];
-        $output = $this->runGush($cmd, $symlinked);
-        $this->writeln($output);
-
-        $cmd = ['git', 'checkout', '-'];
-        $output = $this->runCommand($cmd, $symlinked);
-        $this->writeln($output);
-
-        $cmd = ['git', 'rebase', 'origin/'.$baseBranch];
-        $output = $this->runCommand($cmd, $symlinked);
-        $this->writeln($output);
+        $this->runGit(['git', 'checkout', $baseBranch]);
+        $this->runGit(['git', 'pull', '-u', 'origin', $baseBranch]);
+        $this->runGit(['git', 'checkout', '-']);
+        $this->runGit(['git', 'rebase', 'origin/'.$baseBranch]);
     }
 }
