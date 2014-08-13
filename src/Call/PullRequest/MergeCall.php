@@ -43,7 +43,7 @@ class MergeCall extends AbstractGushCall
         $symlinked = $this->getOption('symlinked');
         $baseBranch = $this->getOption('base_branch');
 
-        $cmd = ['p:merge', '61'];
+        $cmd = ['p:merge'];
         $output = $this->runGush($cmd, $symlinked);
         $this->writeln($output);
 
