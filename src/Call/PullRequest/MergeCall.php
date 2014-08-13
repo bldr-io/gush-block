@@ -43,24 +43,10 @@ class MergeCall extends AbstractGushCall
         $symlinked = $this->getOption('symlinked');
         $baseBranch = $this->getOption('base_branch');
 
-        $cmd = ['p:merge'];
-        $output = $this->runGush($cmd, $symlinked);
-        $this->writeln($output);
-
-        $cmd = ['b:d'];
-        $output = $this->runGush($cmd, $symlinked);
-        $this->writeln($output);
-
-        $cmd = ['git', 'checkout', $baseBranch];
-        $output = $this->runCommand($cmd, $symlinked);
-        $this->writeln($output);
-
-        $cmd = ['b:s'];
-        $output = $this->runGush($cmd, $symlinked);
-        $this->writeln($output);
-
-        $cmd = ['git', 'branch', '-d', '-'];
-        $output = $this->runCommand($cmd, $symlinked);
-        $this->writeln($output);
+        $this->writeln($this->runGush(['p:merge'], $symlinked));
+        $this->writeln($this->runGush(['b:d'], $symlinked));
+        $this->runGit(['git', 'checkout', $baseBranch]);
+        $this->runGit(['git', 'pull', '-u', 'origin', $baseBranch]);
+        $this->runGit(['git', 'branch', '-d', '-']);
     }
 }

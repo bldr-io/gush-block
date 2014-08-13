@@ -16,6 +16,11 @@ use Symfony\Component\Process\ProcessBuilder;
 
 abstract class AbstractGushCall extends AbstractCall
 {
+    protected function runGit($cmd)
+    {
+        $this->writeln($this->runCommand($cmd));
+    }
+
     protected function runCommand($cmd)
     {
         $builder = new ProcessBuilder($cmd);
