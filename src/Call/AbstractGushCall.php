@@ -44,9 +44,9 @@ abstract class AbstractGushCall extends AbstractCall
     {
         $this->getOutput()->writeln(
             [
-                "<comment>------Gush------</comment>",
+                "<comment>------Output------</comment>",
                 $output,
-                "<comment>-----/Gush------</comment>"
+                "<comment>-----/Output------</comment>"
             ]
         );
     }
