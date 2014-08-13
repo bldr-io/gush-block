@@ -39,16 +39,8 @@ class CreateCall extends AbstractGushCall
     {
         $symlinked = $this->getOption('symlinked');
 
-        $cmd = [
-            'i:create',
-        ];
-
+        $cmd = ['i:create'];
         $output = $this->runGush($cmd, $symlinked);
-
-        // detect current branch and capture the #
-        // exports to environment the # as ISSUE_ID for
-        // the following call takeCal
-
         $this->writeln($output);
     }
 }
