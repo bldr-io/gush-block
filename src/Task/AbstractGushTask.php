@@ -16,9 +16,9 @@ use Symfony\Component\Process\ProcessBuilder;
 
 abstract class AbstractGushTask extends AbstractTask
 {
-    protected function runGit($cmd)
+    protected function runGit($output, $cmd)
     {
-        $this->writeln($this->runCommand($cmd));
+        $this->writeln($output, $this->runCommand($cmd));
     }
 
     protected function runCommand($cmd)
@@ -45,12 +45,12 @@ abstract class AbstractGushTask extends AbstractTask
         return $this->runCommand($cmd);
     }
 
-    protected function writeln($output)
+    protected function writeln($output, $content)
     {
-        $this->getOutput()->writeln(
+        $output->writeln(
             [
                 "<comment>------Output------</comment>",
-                $output,
+                $content,
                 "<comment>-----/Output------</comment>"
             ]
         );

@@ -12,6 +12,7 @@
 namespace Bldr\Block\Gush\Task\Branch;
 
 use Bldr\Block\Gush\Task\AbstractGushTask;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Example:
@@ -36,13 +37,13 @@ class RebaseTask extends AbstractGushTask
     /**
      * {@inheritDoc}
      */
-    public function run()
+    public function run(OutputInterface $output)
     {
         $baseBranch = $this->getParameter('base_branch');
 
-        $this->runGit(['git', 'checkout', $baseBranch]);
-        $this->runGit(['git', 'pull', '-u', 'origin', $baseBranch]);
-        $this->runGit(['git', 'checkout', '-']);
-        $this->runGit(['git', 'rebase', 'origin/'.$baseBranch]);
+        $this->runGit($output, ['git', 'checkout', $baseBranch]);
+        $this->runGit($output, ['git', 'pull', '-u', 'origin', $baseBranch]);
+        $this->runGit($output, ['git', 'checkout', '-']);
+        $this->runGit($output, ['git', 'rebase', 'origin/'.$baseBranch]);
     }
 }

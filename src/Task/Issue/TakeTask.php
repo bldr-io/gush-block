@@ -12,6 +12,7 @@
 namespace Bldr\Block\Gush\Task\Issue;
 
 use Bldr\Block\Gush\Task\AbstractGushTask;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Example: 
@@ -39,7 +40,7 @@ class TakeTask extends AbstractGushTask
     /**
      * {@inheritDoc}
      */
-    public function run()
+    public function run(OutputInterface $output)
     {
         $symlinked = $this->getParameter('symlinked');
 
@@ -48,16 +49,16 @@ class TakeTask extends AbstractGushTask
             '--issue_number='.$this->getParameter('id'),
         ];
 
-        $output = $this->runGush($cmd, $symlinked);
+        $content = $this->runGush($cmd, $symlinked);
 
         if ($this->getParameter('wip') !== false) {
             $cmd = [
                 'issue:label:assign',
                 '--label=WIP',
             ];
-            $output .= $this->runGush($cmd, $symlinked);
+            $content .= $this->runGush($cmd, $symlinked);
         }
 
-        $this->writeln($output);
+        $this->writeln($output, $content);
     }
 }
