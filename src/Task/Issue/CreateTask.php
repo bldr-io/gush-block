@@ -9,16 +9,16 @@
  * with this source code in the file LICENSE
  */
 
-namespace Bldr\Block\Gush\Call\Issue;
+namespace Bldr\Block\Gush\Task\Issue;
 
-use Bldr\Block\Gush\Call\AbstractGushCall;
+use Bldr\Block\Gush\Task\AbstractGushTask;
 
 /**
  * Example: 
  * -
  *     type: gush:issue:create
  */
-class CreateCall extends AbstractGushCall
+class CreateTask extends AbstractGushTask
 {
     /**
      * {@inheritDoc}

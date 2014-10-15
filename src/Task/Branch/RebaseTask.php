@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE
  */
 
-namespace Bldr\Block\Gush\Call\Branch;
+namespace Bldr\Block\Gush\Task\Branch;
 
-use Bldr\Block\Gush\Call\AbstractGushCall;
+use Bldr\Block\Gush\Task\AbstractGushTask;
 
 /**
  * Example:
@@ -19,7 +19,7 @@ use Bldr\Block\Gush\Call\AbstractGushCall;
  *     type: gush:branch:rebase
  *     base_branch: master
  */
-class RebaseCall extends AbstractGushCall
+class RebaseTask extends AbstractGushTask
 {
     /**
      * {@inheritDoc}

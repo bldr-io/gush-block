@@ -11,10 +11,10 @@
 
 namespace Bldr\Block\Gush\Call;
 
-use Bldr\Call\AbstractCall;
+use Bldr\Task\AbstractTask;
 use Symfony\Component\Process\ProcessBuilder;
 
-abstract class AbstractGushCall extends AbstractCall
+abstract class AbstractGushTask extends AbstractTask
 {
     protected function runGit($cmd)
     {
