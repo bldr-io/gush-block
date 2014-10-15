@@ -11,7 +11,7 @@
 
 namespace Bldr\Block\Gush\Task;
 
-use Bldr\Task\AbstractTask;
+use Bldr\Block\Core\Task\AbstractTask;
 use Symfony\Component\Process\ProcessBuilder;
 
 abstract class AbstractGushTask extends AbstractTask
@@ -56,4 +56,3 @@ abstract class AbstractGushTask extends AbstractTask
         );
     }
 }
- 
