@@ -12,6 +12,7 @@
 namespace Bldr\Block\Gush\Task\Issue;
 
 use Bldr\Block\Gush\Task\AbstractGushTask;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Example: 
@@ -35,11 +36,11 @@ class CreateTask extends AbstractGushTask
     /**
      * {@inheritDoc}
      */
-    public function run()
+    public function run(OutputInterface $output)
     {
         $symlinked = $this->getParameter('symlinked');
 
-        $output = $this->runGush(['i:create'], $symlinked);
-        $this->writeln($output);
+        $content = $this->runGush(['i:create'], $symlinked);
+        $this->writeln($output, $content);
     }
 }

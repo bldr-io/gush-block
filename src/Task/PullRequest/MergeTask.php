@@ -12,6 +12,7 @@
 namespace Bldr\Block\Gush\Task\PullRequest;
 
 use Bldr\Block\Gush\Task\AbstractGushTask;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Example:
@@ -38,15 +39,15 @@ class MergeTask extends AbstractGushTask
     /**
      * {@inheritDoc}
      */
-    public function run()
+    public function run(OutputInterface $output)
     {
         $symlinked = $this->getParameter('symlinked');
         $baseBranch = $this->getParameter('base_branch');
 
-        $this->writeln($this->runGush(['p:merge'], $symlinked));
-        $this->writeln($this->runGush(['b:d'], $symlinked));
-        $this->runGit(['git', 'checkout', $baseBranch]);
-        $this->runGit(['git', 'pull', '-u', 'origin', $baseBranch]);
-        $this->runGit(['git', 'branch', '-d', '-']);
+        $this->writeln($output, $this->runGush(['p:merge'], $symlinked));
+        $this->writeln($output, $this->runGush(['b:d'], $symlinked));
+        $this->runGit($output, ['git', 'checkout', $baseBranch]);
+        $this->runGit($output, ['git', 'pull', '-u', 'origin', $baseBranch]);
+        $this->runGit($output, ['git', 'branch', '-d', '-']);
     }
 }

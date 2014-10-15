@@ -15,9 +15,9 @@
     "require": {
     },
     "require-dev": {
-        "bldr-io/bldr": "~6.2.0",
-        "dflydev/embedded-composer": "dev-master",
-        "composer/composer": "dev-master"
+        "bldr-io/bldr": "dev-master@dev",
+        "dflydev/embedded-composer": "dev-master@dev",
+        "composer/composer": "dev-master@dev"
     },
     "extra": {
         "block-class": "Bldr\\Block\\Gush\\GushBlock"
