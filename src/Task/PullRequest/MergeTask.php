@@ -11,7 +11,7 @@
 
 namespace Bldr\Block\Gush\Call\PullRequest;
 
-use Bldr\Block\Gush\Call\AbstractGushCall;
+use Bldr\Block\Gush\Task\AbstractGushTask;
 
 /**
  * Example:
@@ -20,7 +20,7 @@ use Bldr\Block\Gush\Call\AbstractGushCall;
  *     base_branch: master
  *     symlinked: true
  */
-class MergeCall extends AbstractGushCall
+class MergeTask extends AbstractGushTask
 {
     /**
      * {@inheritDoc}
