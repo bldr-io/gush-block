@@ -28,7 +28,7 @@ class CreateTask extends AbstractGushTask
         $this
             ->setName('gush:issue:create')
             ->setDescription('Creates an issue with bldr')
-            ->addOption('symlinked', false, 'Run with symlinked gush', true)
+            ->addParameter('symlinked', false, 'Run with symlinked gush', true)
         ;
     }
 
@@ -37,7 +37,7 @@ class CreateTask extends AbstractGushTask
      */
     public function run()
     {
-        $symlinked = $this->getOption('symlinked');
+        $symlinked = $this->getParameter('symlinked');
 
         $output = $this->runGush(['i:create'], $symlinked);
         $this->writeln($output);

@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE
  */
 
-namespace Bldr\Block\Gush\Call\PullRequest;
+namespace Bldr\Block\Gush\Task\PullRequest;
 
 use Bldr\Block\Gush\Task\AbstractGushTask;
 
@@ -30,8 +30,8 @@ class MergeTask extends AbstractGushTask
         $this
             ->setName('gush:pull-request:merge')
             ->setDescription('Runs a series of commands to merge and clean up')
-            ->addOption('base_branch', false, 'Base branch to merge things into', 'master')
-            ->addOption('symlinked', false, 'Run with symlinked gush', true)
+            ->addParameter('base_branch', false, 'Base branch to merge things into', 'master')
+            ->addParameter('symlinked', false, 'Run with symlinked gush', true)
         ;
     }
 
@@ -40,8 +40,8 @@ class MergeTask extends AbstractGushTask
      */
     public function run()
     {
-        $symlinked = $this->getOption('symlinked');
-        $baseBranch = $this->getOption('base_branch');
+        $symlinked = $this->getParameter('symlinked');
+        $baseBranch = $this->getParameter('base_branch');
 
         $this->writeln($this->runGush(['p:merge'], $symlinked));
         $this->writeln($this->runGush(['b:d'], $symlinked));
