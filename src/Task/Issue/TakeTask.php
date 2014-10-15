@@ -30,9 +30,9 @@ class TakeTask extends AbstractGushTask
         $this
             ->setName('gush:issue:take')
             ->setDescription('Takes the issue specified by the `id` option')
-            ->addOption('id', true, 'Issue ID to Take')
-            ->addOption('wip', false, 'Should the issue be tagged as WIP?', true)
-            ->addOption('symlinked', false, 'Run with symlinked gush', true)
+            ->addParameter('id', true, 'Issue ID to Take')
+            ->addParameter('wip', false, 'Should the issue be tagged as WIP?', true)
+            ->addParameter('symlinked', false, 'Run with symlinked gush', true)
         ;
     }
 
@@ -41,16 +41,16 @@ class TakeTask extends AbstractGushTask
      */
     public function run()
     {
-        $symlinked = $this->getOption('symlinked');
+        $symlinked = $this->getParameter('symlinked');
 
         $cmd = [
             'i:take',
-            '--issue_number='.$this->getOption('id'),
+            '--issue_number='.$this->getParameter('id'),
         ];
 
         $output = $this->runGush($cmd, $symlinked);
 
-        if ($this->getOption('wip') !== false) {
+        if ($this->getParameter('wip') !== false) {
             $cmd = [
                 'issue:label:assign',
                 '--label=WIP',

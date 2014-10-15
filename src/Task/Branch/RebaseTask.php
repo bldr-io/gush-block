@@ -29,7 +29,7 @@ class RebaseTask extends AbstractGushTask
         $this
             ->setName('gush:branch:rebase')
             ->setDescription('Pulls base branch and re-bases current branch off of that')
-            ->addOption('base_branch', false, 'Base branch to sync', 'master')
+            ->addParameter('base_branch', false, 'Base branch to sync', 'master')
         ;
     }
 
@@ -38,7 +38,7 @@ class RebaseTask extends AbstractGushTask
      */
     public function run()
     {
-        $baseBranch = $this->getOption('base_branch');
+        $baseBranch = $this->getParameter('base_branch');
 
         $this->runGit(['git', 'checkout', $baseBranch]);
         $this->runGit(['git', 'pull', '-u', 'origin', $baseBranch]);

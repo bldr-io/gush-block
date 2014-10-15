@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE
  */
 
-namespace Bldr\Block\Gush\Call;
+namespace Bldr\Block\Gush\Task;
 
 use Bldr\Task\AbstractTask;
 use Symfony\Component\Process\ProcessBuilder;
