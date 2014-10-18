@@ -33,7 +33,7 @@ class TagTask extends AbstractGushTask
             ->setName('gush:branch:tag')
             ->setDescription('Tags automatically a release')
             ->addParameter('base_branch', false, 'Base branch to tag', 'master')
-            ->addParameter('type', false, 'type of release patch, minor or major')
+            ->addParameter('release', false, 'type of release patch, minor or major')
         ;
     }
 
@@ -43,21 +43,21 @@ class TagTask extends AbstractGushTask
     public function run(OutputInterface $output)
     {
         $baseBranch = $this->getParameter('base_branch');
-        $type = $this->getParameter('type');
+        $release = $this->getParameter('release');
 
-        $this->runGit($output, 'git checkout '.$baseBranch);
-        $lastTag = $this->runCommand('git describe --tags --abbrev=0 HEAD');
+        $this->runGit($output, ['git', 'checkout', $baseBranch]);
+        $lastTag = $this->runCommand(['git', 'describe', '--tags', '--abbrev=0', 'HEAD']);
 
         $builder = Parser::toBuilder($lastTag);
 
         switch (true) {
-            case 'major' === $type:
+            case 'major' === $release:
                 $builder->incrementMajor();
                 break;
-            case 'minor' === $type:
+            case 'minor' === $release:
                 $builder->incrementMinor();
                 break;
-            case 'patch' === $type:
+            case 'patch' === $release:
                 $builder->incrementPatch();
                 break;
             default:
@@ -65,7 +65,7 @@ class TagTask extends AbstractGushTask
                 break;
         }
 
-        $newNumber = Dumper::toString($builder->getVersion();
+        $newNumber = Dumper::toString($builder->getVersion());
 
         $this->runGit($output, ['git', 'tag', '-a', $newNumber, '-m', 'auto tagged']);
         $this->runGit($output, ['git', 'push', '--tags']);
