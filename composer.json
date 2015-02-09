@@ -15,7 +15,7 @@
     "require": {
     },
     "require-dev": {
-        "bldr-io/bldr": "dev-master@dev",
+        "bldr-io/bldr": "~8.0.0",
         "dflydev/embedded-composer": "dev-master@dev",
         "composer/composer": "dev-master@dev"
     },
