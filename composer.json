@@ -12,6 +12,7 @@
             "email": "aequasi@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
     },
     "require-dev": {
